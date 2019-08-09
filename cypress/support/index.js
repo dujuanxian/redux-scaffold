@@ -5,15 +5,14 @@
 let polyfill;
 
 before(() => {
-  const polyfillUrl = 'https://unpkg.com/unfetch/dist/unfetch.umd.js';
-  cy.request(polyfillUrl)
-    .then((response) => {
-      polyfill = response.body
-    })
+	const polyfillUrl = "https://unpkg.com/unfetch/dist/unfetch.umd.js";
+	cy.request(polyfillUrl).then(response => {
+		polyfill = response.body;
+	});
 });
 
 Cypress.on("window:before:load", win => {
-  delete win.fetch;
-  win.eval(polyfill);
-  win.fetch = win.unfetch
+	delete win.fetch;
+	win.eval(polyfill);
+	win.fetch = win.unfetch;
 });
