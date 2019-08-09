@@ -12,7 +12,9 @@ before(() => {
 });
 
 Cypress.on("window:before:load", win => {
+	// eslint-disable-next-line no-param-reassign
 	delete win.fetch;
 	win.eval(polyfill);
+	// eslint-disable-next-line no-param-reassign
 	win.fetch = win.unfetch;
 });

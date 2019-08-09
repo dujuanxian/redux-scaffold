@@ -7,7 +7,7 @@ describe("Index page with request", () => {
 		cy.visit(`http://localhost:1234/`);
 	});
 
-	it("should render request data", function() {
+	it("should render request data", () => {
 		cy.wait("@getData").then(() => {
 			cy.screenshot("index_with_request");
 		});
